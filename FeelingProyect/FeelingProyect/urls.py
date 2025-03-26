@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'), #index
     path('echotribe/', include('EchoTribe.urls')),
+    path('api/', include('api.urls', namespace='api'))
 ]

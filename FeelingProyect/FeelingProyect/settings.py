@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +29,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#RUTAS DE LOS MODELOS
+MODELS_DIR = BASE_DIR.parent / "vectorizadores"
 
+# Definir las rutas de los modelos
+EMBEDDING_MODEL_EN_PATH = str(MODELS_DIR / "wiki-news-300d-1M.bin")
+EMBEDDING_MODEL_ES_PATH = str(MODELS_DIR / "cc.es.300.bin")
 # Application definition
 
 INSTALLED_APPS = [

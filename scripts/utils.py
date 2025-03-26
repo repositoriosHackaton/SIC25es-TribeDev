@@ -24,7 +24,7 @@ def process_null_values(data: pd.DataFrame) ->pd.Series: #tipamos la funcion her
     # Filtrando las columnas con valores faltantes
     columns_with_missing = missing_data[missing_percentage > 0]
     listavalores =[]
-    if not columns_with_missing.empty:  # empty nos devuelve True si la serie está vacia
+    if not columns_with_missing.empty:  # empty nos devuelve True si la serie esta vacia
         missingDict = columns_with_missing.to_dict()
         for key, value in missingDict.items():
             print(key, 'de registros:')
@@ -53,12 +53,12 @@ nlp_es = spacy.load("es_core_news_sm", disable=["parser", "ner"])
 PUNCTUATION_BEFORE = re.compile(r'(\w)([.,!?;:])')
 PUNCTUATION_AFTER = re.compile(r'([.,!?;:])(\w)')
 
-# Definir stopwords
+# DefinIMOS stopwords
 stop_words_en = set(spacy.lang.en.stop_words.STOP_WORDS) - {"not", "no", "never", "ever","bad"}
 stop_words_es = set(spacy.lang.es.stop_words.STOP_WORDS) - {"no", "nunca", "jamás","mejor","peor","sé","muy","poco"}
 
 def tokenice_and_lemati(texts, process, language):
-    # Validar idioma y seleccionar recursos
+    # Validar idioma y seleccionar 
     if language == 'en':
         nlp = nlp_en
         stop_words = stop_words_en
@@ -76,7 +76,6 @@ def tokenice_and_lemati(texts, process, language):
         text = PUNCTUATION_AFTER.sub(r'\1 \2', text)   # Separa ".palabra" -> ". palabra"
         preprocessed_texts.append(text)
     
-    # Procesamiento con spaCy (en lote)
     results = []
     for doc in nlp.pipe(preprocessed_texts, batch_size=50):  # Batch para mejor rendimiento
         tokens = []
